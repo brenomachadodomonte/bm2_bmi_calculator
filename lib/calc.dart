@@ -65,15 +65,39 @@ class _CalcState extends State<Calc> {
                 FloatingActionButton.extended(
                   label: Text('Calc'),
                   icon: Icon(Icons.check),
-                  onPressed: (){
-                    //TODO: Calc
-                  },
+                  onPressed: _calc,
                 ),
               ],
             ),
+            Padding(padding: EdgeInsets.all(20)),
+            Text(_bmi, style: TextStyle(fontSize: 18)),
+            Text(_result, style: TextStyle(fontSize: 26)),
           ],
         ),
       ),
     );
+  }
+
+  void _calc(){
+    int height = int.parse(heightController.text);
+    int weight = int.parse(weightController.text);
+
+    double bmi = weight / ((height / 100) * (height / 100));
+    String shape = '';
+
+    if(bmi < 18.5){
+      shape = 'underweight';
+    } else if(bmi < 25){
+      shape = 'normal weight';
+    } else if(bmi < 30){
+      shape = 'overweight';
+    } else {
+      shape = 'obesity';
+    }
+
+    setState(() {
+      _bmi = 'Your BMI is ${bmi.toStringAsFixed(2)}';
+      _result = 'You are $shape';
+    });
   }
 }
