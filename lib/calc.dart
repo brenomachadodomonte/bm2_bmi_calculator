@@ -58,9 +58,7 @@ class _CalcState extends State<Calc> {
                 FloatingActionButton.extended(
                   label: Text('Reset'),
                   icon: Icon(Icons.clear),
-                  onPressed: (){
-                    //TODO: Clear fields and Result
-                  },
+                  onPressed: _reset,
                 ),
                 FloatingActionButton.extended(
                   label: Text('Calc'),
@@ -76,6 +74,15 @@ class _CalcState extends State<Calc> {
         ),
       ),
     );
+  }
+
+  void _reset(){
+    heightController.text = '';
+    weightController.text = '';
+    setState(() {
+      _bmi = '';
+      _result = '';
+    });
   }
 
   void _calc(){
