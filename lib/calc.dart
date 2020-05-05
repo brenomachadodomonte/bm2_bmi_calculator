@@ -9,6 +9,8 @@ class _CalcState extends State<Calc> {
 
   final heightController = TextEditingController();
   final weightController  = TextEditingController();
+  String _bmi  = '';
+  String _result  = '';
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class _CalcState extends State<Calc> {
             SizedBox(height: 20),
             TextField(
               decoration: InputDecoration(
-                labelText: 'Your Height',
+                labelText: 'Your Height(cm)',
                 labelStyle: TextStyle(color: Colors.grey[700]),
                 border: OutlineInputBorder(),
               ),
@@ -40,7 +42,7 @@ class _CalcState extends State<Calc> {
             Padding(padding: EdgeInsets.all(10)),
             TextField(
               decoration: InputDecoration(
-                labelText: 'Your Weight',
+                labelText: 'Your Weight(kg)',
                 labelStyle: TextStyle(color: Colors.grey[700]),
                 border: OutlineInputBorder(),
               ),
@@ -50,13 +52,25 @@ class _CalcState extends State<Calc> {
               //onChanged: onChanged,
             ),
             Padding(padding: EdgeInsets.all(10)),
-            FloatingActionButton.extended(
-              label: Text('Calc'),
-              icon: Icon(Icons.check),
-              onPressed: (){
-
-              },
-            )
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                FloatingActionButton.extended(
+                  label: Text('Reset'),
+                  icon: Icon(Icons.clear),
+                  onPressed: (){
+                    //TODO: Clear fields and Result
+                  },
+                ),
+                FloatingActionButton.extended(
+                  label: Text('Calc'),
+                  icon: Icon(Icons.check),
+                  onPressed: (){
+                    //TODO: Calc
+                  },
+                ),
+              ],
+            ),
           ],
         ),
       ),
