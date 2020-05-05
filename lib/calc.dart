@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Calc extends StatefulWidget {
   @override
@@ -47,6 +48,9 @@ class _CalcState extends State<Calc> {
                         labelStyle: TextStyle(color: Colors.grey[700]),
                         border: OutlineInputBorder(),
                       ),
+                      inputFormatters: <TextInputFormatter>[
+                        WhitelistingTextInputFormatter.digitsOnly
+                      ],
                       style: TextStyle(color: Colors.grey[700], fontSize: 25.0),
                       controller: heightController,
                       keyboardType: TextInputType.number,
@@ -60,6 +64,9 @@ class _CalcState extends State<Calc> {
                         }
                         return null;
                       },
+                      inputFormatters: <TextInputFormatter>[
+                        WhitelistingTextInputFormatter.digitsOnly
+                      ],
                       decoration: InputDecoration(
                         labelText: 'Your Weight(kg)',
                         labelStyle: TextStyle(color: Colors.grey[700]),
